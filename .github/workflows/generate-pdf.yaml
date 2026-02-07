@@ -1,0 +1,33 @@
+name: Generate CV PDF
+
+on:
+  push:
+    paths:
+      - 'cv.md'  # Only runs when you edit your CV file
+  workflow_dispatch: # Allows you to run it manually
+
+jobs:
+  convert_via_pandoc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Generate PDF from Markdown
+        uses: baileyjm02/markdown-to-pdf@v1
+        with:
+          input_path: cv.md
+          output_dir: .
+          # You can add a custom CSS file if you want to style the PDF
+          # build_html: true 
+
+      - name: Rename output
+        run: mv cv.pdf mohammad-hosein-moslemi-cv.pdf
+
+      - name: Commit and Push PDF
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add mohammad-hosein-moslemi-cv.pdf
+          git commit -m "chore: update auto-generated cv pdf" || exit 0
+          git push
