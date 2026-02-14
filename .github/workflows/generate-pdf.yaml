@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'cv.md'
+      - 'style.css'
   workflow_dispatch:
 
 jobs:
@@ -29,7 +30,7 @@ jobs:
         run: |
           pandoc cv.md -o "mohammad-hosein-moslemi-cv-${{ steps.date.outputs.date }}.pdf" \
           --pdf-engine=weasyprint \
-          -V margin-top=1in -V margin-bottom=1in -V margin-left=1in -V margin-right=1in
+          --css=style.css
 
       - name: Commit and Push
         run: |
