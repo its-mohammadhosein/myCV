@@ -50,7 +50,7 @@ Frontend Engineer with **3+ years of professional experience** specializing in h
 
 ---
 
-## Selected Projects
+<!-- ## Selected Projects
 
 ### EDR Security Management System (AmanSec)
-**Stack:** Next.js 15, **MUI**, TypeScript
+**Stack:** Next.js 15, **MUI**, TypeScript -->
